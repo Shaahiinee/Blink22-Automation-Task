@@ -8,7 +8,7 @@ public class BlogPage extends BasePage {
     By fullNameField = By.id("fullname");
     By emailField = By.id("email");
     By subscribeBtn = By.id("_form_5_submit");
-    By thankYouMsgField = By.cssSelector("._form-thank-you");
+    By thankYouMsgField = By.cssSelector("div._form-thank-you");
     By fullNameErr = By.cssSelector("#fullname + div._error ._error-inner");
     By emailErr = By.cssSelector("#email + div._error ._error-inner");
 
@@ -16,29 +16,38 @@ public class BlogPage extends BasePage {
         super(driver);
     }
 
-    public void Subscribe(String fullName, String email) {
+    public void subscribe(String fullName, String email) {
         sendKeys(fullNameField, fullName);
         sendKeys(emailField, email);
         click(subscribeBtn);
+        isElementPresent(thankYouMsgField);
     }
 
-    public boolean IsSubscribeBtnPresent() {
+    public boolean isSubscribeBtnPresent() {
         return isElementPresent(subscribeBtn);
     }
 
-    public boolean IsThankYouMsgPresent() {
+    public boolean isThankYouMsgPresent() {
         return isElementPresent(thankYouMsgField);
     }
 
-    public boolean IsFullNameErrMsgPresent() {
+    public boolean isFullNameErrMsgPresent() {
         return isElementPresent(fullNameErr);
     }
 
-    public boolean IsEmailErrMsgPresent() {
+    public boolean isEmailErrMsgPresent() {
         return isElementPresent(emailErr);
     }
 
-    public String ThankYouMsg() {
+    public String getFullNamePlaceholder() {
+        return getPlaceholder(fullNameField);
+    }
+
+    public String getEmailPlaceholder() {
+        return getPlaceholder(emailField);
+    }
+
+    public String getThankYouMsg() {
         return getText(thankYouMsgField);
     }
 

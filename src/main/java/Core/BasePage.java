@@ -53,4 +53,12 @@ public class BasePage {
         }
     }
 
+    protected  String getPlaceholder(By locator) {
+        try {
+            return findElement(locator).getAttribute("placeholder");
+        }
+        catch (Exception e) {
+            return "";
+        }
+    }
 }

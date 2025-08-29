@@ -17,6 +17,9 @@ public class BaseTest {
         homePage = new HomePage(driver);
         homePage = homePage.goToHomePage();
         blogPage = homePage.clickOnBlog();
+        System.out.println(blogPage.getFullNamePlaceholder());
+        System.out.println(blogPage.getEmailPlaceholder());
+        //The Task only said extract.
     }
 
     @AfterMethod
