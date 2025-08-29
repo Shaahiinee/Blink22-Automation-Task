@@ -9,9 +9,9 @@ public class BlogSubscriptionEmailValidationTest extends BaseTest {
     public void TestBlogSubscriptionEmailValidation() {
         SoftAssert softAssert = new SoftAssert();
         blogPage.subscribe("Test Name", "TestEmail");
-        softAssert.assertTrue(blogPage.isSubscribeBtnPresent(),"Subscribe button is not present");
-        softAssert.assertFalse(blogPage.isThankYouMsgPresent(),"Thank You message is displayed");
-        softAssert.assertTrue(blogPage.isEmailErrMsgPresent(), "No Error message displayed");
+        softAssert.assertTrue(blogPage.isFormContentVisible(),"Subscribe form is not visible");
+        softAssert.assertFalse(blogPage.isThankYouMsgVisible(),"Thank You message is visible");
+        softAssert.assertTrue(blogPage.isEmailErrMsgVisible(), "No Error message visible");
         softAssert.assertEquals(blogPage.getEmailErrMsg(),"Enter a valid email address.","The error message is not correct.");
         softAssert.assertAll();
     }

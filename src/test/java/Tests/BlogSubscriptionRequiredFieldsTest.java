@@ -10,22 +10,22 @@ public class BlogSubscriptionRequiredFieldsTest extends BaseTest {
         SoftAssert softAssert = new SoftAssert();
         blogPage.subscribe("",
                 "TestEmail@example.com");
-        softAssert.assertTrue(blogPage.isSubscribeBtnPresent(),"Subscribe button is not present");
-        softAssert.assertFalse(blogPage.isThankYouMsgPresent(),"Thank You message is displayed");
-        softAssert.assertTrue(blogPage.isFullNameErrMsgPresent(), "No Error message displayed");
+        softAssert.assertTrue(blogPage.isFormContentVisible(),"Subscribe form is not visible");
+        softAssert.assertFalse(blogPage.isThankYouMsgVisible(),"Thank You message is visible");
+        softAssert.assertTrue(blogPage.isFullNameErrMsgVisible(), "No Error message visible");
         softAssert.assertEquals(blogPage.getFullNameErrMsg(),"This field is required.");
         blogPage.subscribe("Test Name",
                 "");
-        softAssert.assertTrue(blogPage.isSubscribeBtnPresent(),"Subscribe button is not present");
-        softAssert.assertFalse(blogPage.isThankYouMsgPresent(),"Thank You message is displayed");
-        softAssert.assertTrue(blogPage.isEmailErrMsgPresent(), "No Error message displayed");
+        softAssert.assertTrue(blogPage.isFormContentVisible(),"Subscribe form is not visible");
+        softAssert.assertFalse(blogPage.isThankYouMsgVisible(),"Thank You message is visible");
+        softAssert.assertTrue(blogPage.isEmailErrMsgVisible(), "No Error message visible");
         softAssert.assertEquals(blogPage.getEmailErrMsg(),"This field is required.");
         blogPage.subscribe("",
                 "");
-        softAssert.assertTrue(blogPage.isSubscribeBtnPresent(),"Subscribe button is not present");
-        softAssert.assertFalse(blogPage.isThankYouMsgPresent(),"Thank You message is displayed");
-        softAssert.assertTrue(blogPage.isFullNameErrMsgPresent(), "No Error message displayed");
-        softAssert.assertTrue(blogPage.isEmailErrMsgPresent(), "No Error message displayed");
+        softAssert.assertTrue(blogPage.isFormContentVisible(),"Subscribe form is not visible");
+        softAssert.assertFalse(blogPage.isThankYouMsgVisible(),"Thank You message is visible");
+        softAssert.assertTrue(blogPage.isFullNameErrMsgVisible(), "No Error message visible");
+        softAssert.assertTrue(blogPage.isEmailErrMsgVisible(), "No Error message visible");
         softAssert.assertEquals(blogPage.getFullNameErrMsg(),"This field is required.");
         softAssert.assertEquals(blogPage.getEmailErrMsg(),"This field is required.");
         softAssert.assertAll();

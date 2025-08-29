@@ -10,8 +10,8 @@ public class BlogSubscriptionSuccessfulSubmissionTest extends BaseTest {
         SoftAssert softAssert = new SoftAssert();
         blogPage.subscribe("Test Name",
                 "TestEmail@example.com");
-        softAssert.assertFalse(blogPage.isSubscribeBtnPresent(),"Subscribe button is still present");
-        softAssert.assertTrue(blogPage.isThankYouMsgPresent(),"Thank You message is not displayed");
+        softAssert.assertFalse(blogPage.isFormContentVisible(),"Subscribe form is still visible");
+        softAssert.assertTrue(blogPage.isThankYouMsgVisible(),"Thank You message is not visible");
         softAssert.assertEquals(blogPage.getThankYouMsg(),"Thanks for signing up! Check your inbox for your Welcome package!");
         softAssert.assertAll();
     }

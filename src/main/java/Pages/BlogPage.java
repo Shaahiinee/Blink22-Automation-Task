@@ -8,7 +8,8 @@ public class BlogPage extends BasePage {
     By fullNameField = By.id("fullname");
     By emailField = By.id("email");
     By subscribeBtn = By.id("_form_5_submit");
-    By thankYouMsgField = By.cssSelector("div._form-thank-you");
+    By formContent = By.className("_form-content");
+    By thankYouMsgField = By.className("_form-thank-you");
     By fullNameErr = By.cssSelector("#fullname + div._error ._error-inner");
     By emailErr = By.cssSelector("#email + div._error ._error-inner");
 
@@ -20,22 +21,22 @@ public class BlogPage extends BasePage {
         sendKeys(fullNameField, fullName);
         sendKeys(emailField, email);
         click(subscribeBtn);
-        isElementPresent(thankYouMsgField);
+        getThankYouMsg();
     }
 
-    public boolean isSubscribeBtnPresent() {
-        return isElementPresent(subscribeBtn);
+    public boolean isFormContentVisible() {
+        return isElementPresent(formContent);
     }
 
-    public boolean isThankYouMsgPresent() {
+    public boolean isThankYouMsgVisible() {
         return isElementPresent(thankYouMsgField);
     }
 
-    public boolean isFullNameErrMsgPresent() {
+    public boolean isFullNameErrMsgVisible() {
         return isElementPresent(fullNameErr);
     }
 
-    public boolean isEmailErrMsgPresent() {
+    public boolean isEmailErrMsgVisible() {
         return isElementPresent(emailErr);
     }
 
