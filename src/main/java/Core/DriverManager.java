@@ -1,4 +1,4 @@
-package Core;
+package core;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -7,10 +7,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.time.Duration;
 
-public class DriverManager {
-    public static WebDriver driver;
+class DriverManager {
+    private static WebDriver driver;
 
-    public static WebDriver getDriver(String browserName) {
+    static WebDriver getDriver(String browserName) {
         if (driver == null) {
             switch (browserName.toLowerCase()) {
                 case "chrome":
@@ -23,7 +23,7 @@ public class DriverManager {
                     driver = new EdgeDriver();
                     break;
                 default:
-                    throw new RuntimeException("Browser not supported: " + browserName);
+                    throw new IllegalArgumentException("Browser not supported: " + browserName);
             }
             driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
             driver.manage().window().maximize();
@@ -31,7 +31,7 @@ public class DriverManager {
         return driver;
     }
 
-    public static void quitDriver() {
+    static void quitDriver() {
         if (driver != null) {
             driver.quit();
             driver = null;

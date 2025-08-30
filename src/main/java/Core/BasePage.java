@@ -1,4 +1,4 @@
-package Core;
+package core;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,53 +11,51 @@ import java.util.List;
 
 public class BasePage {
     protected final WebDriver driver;
-    WebDriverWait wait;
+    private WebDriverWait wait;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+        wait = new WebDriverWait(driver , Duration.ofSeconds(2));
     }
 
-    protected WebElement findElement(By locator) {
+    private WebElement findElement(By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    protected List<WebElement> findElements(By locator) {
+    private List<WebElement> findElements(By locator) {
         return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
     }
 
-    protected void click(By locator) {
+    protected final void click(By locator) {
         wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
     }
 
-    protected void sendKeys(By locator, String text) {
+    protected final void sendKeys(By locator , String text) {
         WebElement element = findElement(locator);
         element.clear();
         element.sendKeys(text);
     }
 
-    protected boolean isElementPresent(By locator) {
+    protected final boolean isElementPresent(By locator) {
         try {
             return !findElements(locator).isEmpty();
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
             return false;
         }
     }
 
-    protected String getText(By locator) {
+    protected final String getText(By locator) {
         try {
             return findElement(locator).getText();
-        }
-        catch (Exception e) {
+        } catch (RuntimeException e) {
             return "";
         }
     }
 
-    protected  String getPlaceholder(By locator) {
+    protected final String getPlaceholder(By locator) {
         try {
             return findElement(locator).getAttribute("placeholder");
-        }
-        catch (Exception e) {
+        } catch (RuntimeException e) {
             return "";
         }
     }

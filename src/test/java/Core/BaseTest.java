@@ -1,7 +1,7 @@
-package Core;
+package core;
 
-import Pages.BlogPage;
-import Pages.HomePage;
+import pages.BlogPage;
+import pages.HomePage;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -16,6 +16,7 @@ public class BaseTest {
         driver = DriverManager.getDriver("edge");
         homePage = new HomePage(driver);
         homePage = homePage.goToHomePage();
+        homePage.closeCookiesPopup();
         blogPage = homePage.clickOnBlog();
         System.out.println(blogPage.getFullNamePlaceholder());
         System.out.println(blogPage.getEmailPlaceholder());
