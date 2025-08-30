@@ -7,14 +7,12 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
-    protected WebDriver driver;
-    protected HomePage homePage;
     protected BlogPage blogPage;
 
     @BeforeMethod
-    public void setup() {
-        driver = DriverManager.getDriver("edge");
-        homePage = new HomePage(driver);
+    public final void setup() {
+        WebDriver driver = DriverManager.getDriver("edge");
+        HomePage homePage = new HomePage(driver);
         homePage = homePage.goToHomePage();
         homePage.closeCookiesPopup();
         blogPage = homePage.clickOnBlog();
@@ -24,7 +22,7 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public void tearDown() {
+    public final void tearDown() {
         DriverManager.quitDriver();
     }
 }
